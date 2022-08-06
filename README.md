@@ -1,0 +1,2 @@
+# Zugo
+My Hugo theme.
