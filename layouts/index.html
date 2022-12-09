@@ -1,48 +1,58 @@
-{{ partial "header.html" . -}}
-<header><h1>{{ .Title }}</h1></header>
-
-<p id="home-page-intro">
-Hi there! Thanks for stopping by. In this website
-you'll find all kinds of stuff I write, read, and
-do, such as book reviews, summary of academic works,
-and articles on many topics.
-</p>
-
-<h2>Main Locations</h2>
-
-<ul class="pretty-list">
-    <li><a href="/tags/academic">🏯 Tower of Academia</a> ~ summaries of academic works and related.</li>
-    <li><a href="/tags/story">📚 Library of Stories</a> ~ book reviews, featuring fantasy, sci-fi and others.</li>
-    <li><a href="/tags/guide">✨ Room of Knowledge</a> ~ guides and tutorials I've authored.</li>
-    <li><a href="/tags/writing">🪴 Garden of Creation</a> ~ stories I write when I have the time.</li>
-    <li><a href="/tags/essay">📜 Archive of Scrolls</a> ~ essays and other articles about stuff I find interesing.</li>
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+<head>
+	<title>Lázaro's Website</title>
+	<link rel="canonical" href="{{ .Site.BaseURL }}">
+	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+	{{ with .Site.Params.favicon }}<link rel="icon" href="{{ . }}">
+	{{ end -}}
+	<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
+	{{ if isset .Params "tags" }}<meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}">
+	{{ end -}}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="index, follow">
+	<meta charset="utf-8">
+</head>
+<body>
+<div class="outer">
+<div class="inner">
+<i class="top left"></i>
+<i class="top right"></i>
+<main class="content">
+<header>
+    <h1>Lázaro's Website</h1>
+    <article style="width: 600px; margin: auto;">{{ .Content }}</article>
+</header>
+<article>
+{{ block "main" . }}
+<h2 style="text-align: center;">Locations</h2>
+<ul class="locationlisting">
+    <a href="/tower"  ><li><img src="tower.gif"   class="pixelart">Tower</li></a>
+    <a href="/library"><li><img src="library.gif" class="pixelart">Library</li></a>
+    <a href="/garden" ><li><img src="garden.gif"  class="pixelart">Garden</li></a>
+    <a href="/keep"   ><li><img src="keep.gif"    class="pixelart">Keep</li></a>
+    <a href="/dungeon"><li><img src="dungeon.gif" class="pixelart">Dungeon</li></a>
 </ul>
-
-<h3>Recent Posts</h3>
-<ul class="pretty-list">
-{{ range .Site.RegularPages | first 5 }}
-<li>{{.Date.Format "January 02, 2006"}} - <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
 {{ end }}
+<h2 style="text-align: center;">Publications</h2>
+{{ partial "mostrecent.html" . }}
+<h2 style="text-align: center;">Links</h2>
+<ul class="locationlisting" style="width: 100%; justify-content: center; gap: 50px; margin: 0; padding: 0;">
+    <a href="https://github.com/rodrigueslazaro"><li><img src="github.gif" class="pixelart" style="width: 45px; padding: 10px 0px 5px 0px;">GitHub</li></a>
+    <a href="/monero"><li><img src="monero.gif" class="pixelart" style="width: 50px; padding: 10px 0px 0px 0px;">Donate</li></a>
+    <a href="/garden/ralklen"><li><img src="rallklen.gif" class="pixelart" style="width: 50px; padding: 10px 0px 0px 0px;">Ralklen</li></a>
 </ul>
-{{ range .Data.Singular }}
-<li>{{ .Title }}</li>
-{{ end }} 
-</ul>
-<h3>Filter by Topic</h3>
-<ul class="home-tags">
-  {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-      <ul>
-        {{ range $key, $value := $taxonomy }}
-        <a href="{{ "/tags/"}}{{ $key }}"><li> {{ $key }} </li></a>
-        {{ end }}
-      </ul>
-  {{ end }}
-</ul>
+</article>
+</main>
+<i class="bottom right"></i>
+<i class="bottom left"></i>
+</div>
+</div>
+{{ block "footer" . }}
+<footer>
 
-<ul class="pretty-list horizontal">
-	<a href="/about"><li> 🙋🏻 About</li></a>
-	<a href="/contact"><li> 📬 Contact</li></a>
-</ul>
-
-
-{{ partial "footer.html" . }}
+</footer>
+{{ end }}
+</body>
+</html>

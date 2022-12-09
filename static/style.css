@@ -1,45 +1,207 @@
+:root {
+    --background: #050520;
+    --middleground: #201050;
+    --foreground: #ee7500;
+    --highlight: #debb0d;
+    --maj-highlight: #ffd700;
+    --trs-maj-highlight: rgba(255, 215, 00, 0.4);
+    --trs-highlight: rgba(42, 18, 161, 0.2);
+    --spark: #aa1010;
+    --trs-spark: rgba(170, 20, 20, 0.2);
+    --text: #eee;
+}
+
 body {
-	font-style: sans-serif ;
-	background: #110000 ;
-	color: #ccc ;
+    font-family: monospace;
+    font-size: 1.5em;
+    background: var(--background);
+    color: var(--text);
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 main {
-	max-width: 800px ;
-	margin: auto ;
+    background: var(--middleground);
+    border-radius: 10px;
+    border: 1px solid var(--highlight);
+    padding: 0px 16px 16px 16px;
+    margin: auto;
+    max-width: 720px;
 }
 
 img {
-	max-width: 100% ;
+    max-width: 100%;
+    margin: 0px 0px 0px 0px;
 }
 
 header h1 {
-	text-align: center ;
+    text-align: center;
+    color: var(--highlight);
+    border-radius: 10%;
+    border-bottom: 2px solid var(--maj-highlight);
+    width: fit-content;
+    padding: 10px 10px 0px 10px;
+    margin: 20px auto 40px auto;
+}
+
+h2,
+h3,
+h4 {
+    background-color: var(--trs-spark);
+    border-radius: 30px;
+    text-align: center;
 }
 
 footer {
-	text-align: center ;
-	clear: both ;
+    text-align: center;
+    clear: both;
+}
+
+a {
+    color: var(--highlight);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--maj-highlight);
+}
+
+.pagelisting {
+    list-style: none;
+}
+
+.pagelisting li {
+    padding: 3px 8px 3px 8px;
+    border-left: 1px solid var(--highlight);
+    border-right: 1px solid var(--highlight);
+    border-radius: 4px;
+    margin-top: 8px;
+    max-width: 590px;
+    color: var(--highlight);
+}
+
+.pagelisting li:hover {
+    background-color: var(--trs-highlight);
+    border-left: 1px solid var(--maj-highlight);
+    border-right: 1px solid var(--maj-highlight);
+    color: var(--maj-highlight);
+    cursor: pointer;
+}
+
+.pagelisting li button {
+    border: none;
+    color: var(--text);
+    background-color: rgba(10, 10, 1, 0);
+    font-size: large;
+}
+
+.pagelisting li button:hover {
+    border: none;
+    color: var(--text);
+    background-color: rgba(10, 10, 1, 0);
+    font-size: large;
+    cursor: pointer;
+}
+
+.locationlisting {
+    text-align: center;
+    width: 300px;
+    padding: 0;
+    display: flex;
+    margin-left: 37px;
+    font-size: 1.1rem;
+}
+
+.locationlisting li {
+    border-left: 1px solid var(--highlight);
+    border-right: 1px solid var(--highlight);
+    list-style: none;
+    width: 100px;
+    min-height: 100px;
+    margin: 10px;
+    border-radius: 4px;
+}
+
+.locationlisting li:hover {
+    background-color: var(--trs-highlight);
+    border-left: 1px solid var(--maj-highlight);
+    border-right: 1px solid var(--maj-highlight);
+    color: var(--maj-highlight);
 }
 
 /* For TAGLIST.HTML */
 .taglist {
-	text-align: center ;
-	clear: both ;
+    text-align: center;
+    font-size: 1rem;
+    border: 1px solid var(--spark);
+}
+
+.taglist a {
+    color: var(--text);
 }
 
 /* For NEXTPREV.HTML */
 #nextprev {
-	/* The container for both the previous and next articles. */
+    /* The container for both the previous and next articles. */
 }
+
 #prevart {
-	float: left ;
-	text-align: left ;
+    float: left;
+    text-align: left;
 }
+
 #nextart {
-	float: right ;
-	text-align: right ;
+    float: right;
+    text-align: right;
 }
-#nextart,#prevart {
-	max-width: 33% ;
+
+#nextart,
+#prevart {
+    max-width: 33%;
+}
+
+.outer {
+    overflow: hidden;
+    max-width: 720px;
+    margin: auto;
+}
+
+.inner {}
+
+.inner i {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--highlight);
+    border-radius: 50%;
+    background-color: var(--background);
+}
+
+.inner .top {
+    margin-top: -20px;
+}
+
+.inner .bottom {
+    margin-top: -20px;
+    margin-bottom: -22px;
+}
+
+.inner .left {
+    float: left;
+    margin-left: -20px;
+}
+
+.inner .right {
+    float: right;
+    margin-right: -20px;
+}
+
+.content {
+    min-height: 80px;
+}
+
+.pixelart {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    width: 64px;
 }

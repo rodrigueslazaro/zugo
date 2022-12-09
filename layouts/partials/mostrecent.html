@@ -1,0 +1,10 @@
+<ul class="pagelisting">
+    {{ range ( first 5 .Site.RegularPages.ByDate.Reverse )}}
+        <a href="{{ .Permalink }}">
+        <li>
+            « <time>{{ .Date.Format "Jan 2, 2006" }}</time> »
+            {{ .Title }}
+        </li>
+        </a>
+    {{ end }}
+</ul>

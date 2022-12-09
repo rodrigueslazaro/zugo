@@ -15,7 +15,29 @@
 	<meta charset="utf-8">
 </head>
 <body>
-{{- if .Site.Menus.main }}
-{{ partial "nav.html" . }}
+{{ if .Site.Menus.main }}{{ partial "nav.html" . }}{{ end -}}
+<div class="outer">
+<div class="inner">
+<i class="top left"></i>
+<i class="top right"></i>
+<main class="content">
+<header><h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1></header>
+<article>
+{{ block "main" . }}
+{{ .Content }}
 {{ end }}
-<main>
+{{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
+{{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
+</article>
+</main>
+<i class="bottom right"></i>
+<i class="bottom left"></i>
+</div>
+</div>
+{{ block "footer" . }}
+<footer>
+    {{ if (not .IsHome) }}<a href="{{ .Site.BaseURL }}">Back to Home</a>{{ end }}
+</footer>
+{{ end }}
+</body>
+</html>
